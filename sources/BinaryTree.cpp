@@ -7,7 +7,7 @@ BinaryTree<T>::BinaryTree()
 }
 
 template<class T>
-Node<T>*Tree<T>::root_()const
+Node<T>*BinaryTree<T>::root_()const
 {
 	return root;
 }
