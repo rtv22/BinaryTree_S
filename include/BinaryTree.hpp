@@ -5,16 +5,15 @@
 
 using namespace std;
 
-template<typename T>
+template <class T> 
 struct Node
 {
-	T	data;
-	Node *left;
-	Node *right;
+	T data;
+	Node<T>* left;
+	Node<T>* right;
 };
 
-
-template<typename T>
+template <class T> 
 class BinaryTree
 {
 private:
@@ -22,9 +21,12 @@ private:
 public:
 	BinaryTree();
 	~BinaryTree();
-	Node<T> *search(const T&);
-	void add_node(const T&, Node<T>*&);
-	void reading(const std::string);
-	void outfile(Node<T>*, ostream&)const;
-	void writing(const std::string);
+	void deleteNode(Node<T>* temp);
+	void insert_node(const T&);
+	void print()const;
+	Node<T> *find_node(const T&, Node<T>*)const;
+	void show(Node<T>*, unsigned int)const;
+	void reading(const std::string&);
+	void output(std::ostream& ost, Node<T>*)const;
+	void writing(const std::string&)const;
 };
