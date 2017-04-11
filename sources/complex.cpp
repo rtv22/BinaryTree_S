@@ -1,9 +1,10 @@
 #include "BinaryTree.hpp"
 
 
-template<typename T>
-Node<T> : data{ 0 }, left{ nullptr }, right{ nullptr }
+template <typename T> 
+BinaryTree<T>::BinaryTree()
 {
+	root = NULLPTR;
 }
 
 template<typename T>
