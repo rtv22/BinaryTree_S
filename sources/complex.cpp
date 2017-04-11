@@ -2,7 +2,7 @@
 
 
 template<typename T>
-BinaryTree<T>::BinaryTree() :data(0), left{ nullptr }, right{ nullptr }, root{ nullptr }
+Node<T> : data{ 0 }, left{ nullptr }, right{ nullptr }
 {
 }
 
