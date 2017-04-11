@@ -53,7 +53,7 @@ void BinaryTree<T>::insert_node(const T&x)
 	else
 	{
 		if (x < buff->data)
-			buff->left = Myree;
+			buff->left = MyTree;
 		else
 			buff->right = MyTree;
 	}
