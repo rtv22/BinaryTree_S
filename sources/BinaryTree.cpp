@@ -6,6 +6,12 @@ BinaryTree<T>::BinaryTree()
 	root = nullptr;
 }
 
+template<class T>
+Node<T>*Tree<T>::root_()const
+{
+	return root;
+}
+
 template<typename T>
 BinaryTree<T>::~BinaryTree()
 {
@@ -34,7 +40,7 @@ void BinaryTree<T>::deleteNode(Node<T>* temp)
 template<typename T>
 void BinaryTree<T>::insert_node(const T&x)
 {
-	if (find_node(x, root())) return;
+	if (find_node(x, root_())) return;
 	Node<T>* MyTree = new Node<T>;
 	MyTree->data = x;
 	MyTree->left = MyTree->right = 0;
