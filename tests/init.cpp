@@ -4,6 +4,6 @@
 SSCENARIO ("init", "[init]")
 {
   BinaryTree<int> obj;
-  REQUIRE(obj.root_() == NULLPTR);
+  REQUIRE(obj.root() == NULLPTR);
   REQUIRE(obj.data() == 0);
 }
