@@ -24,6 +24,7 @@ public:
 	void deleteNode(Node<T>* temp);
 	void insert_node(const T&);
 	void print()const;
+	Node<T>*root_()const;
 	Node<T> *find_node(const T&, Node<T>*)const;
 	void show(Node<T>*, unsigned int)const;
 	void reading(const std::string&);
