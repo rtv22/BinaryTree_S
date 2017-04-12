@@ -31,13 +31,12 @@ SCENARIO("get root", "[get root]")
 
 SCENARIO ("reading/writing", "[read/write]")
 {
-  Tree<int> test1;
-  test1.insert_node(4);
-  test1.insert_node(3);
-  test1.writing("file2.txt");
-  Tree<int> test2;
-  test2.reading("file2.txt");
-  REQUIRE(test2.find_node(4, test2.root_())!= nullptr);
-  REQUIRE(test2.find_node(3, test2.root_())!= nullptr);
-  REQUIRE(test1.get_count() == test2.get_count());
+  BinaryTree<int> obj;
+  obj.insert_node(1);
+  obj.insert_node(2);
+  obj.writing("file2.txt");
+  Tree<int> obj_1;
+  obj_1.reading("file2.txt");
+  REQUIRE(obj_1.find_node(1, obj_1.root_())!= nullptr);
+  REQUIRE(obj_1.find_node(2, obj_1.root_())!= nullptr);
 }
