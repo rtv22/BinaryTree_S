@@ -29,14 +29,9 @@ SCENARIO("get root", "[get root]")
   REQUIRE(obj.root_() != 0);
 }
 
-SCENARIO ("reading/writing", "[read/write]")
+SCENARIO ("reading", "[reading]")
 {
-  BinaryTree<int> obj;
-  obj.insert_node(3);
-  obj.insert_node(3);
-  obj.writing("file2.txt");
-  BinaryTree<int> obj_1;
-  obj_1.reading("file2.txt");
-  REQUIRE(obj_1.find_node(3, obj_1.root_())!= nullptr);
-  REQUIRE(obj_1.find_node(3, obj_1.root_())!= nullptr);
+   BinaryTree<int> obj;
+   obj.reading("file.txt");
+   REQUIRE(obj.search_result(1) == 1);
 }
