@@ -137,7 +137,7 @@ void BinaryTree<T>::output(ostream& ost, Node<T>* temp)const
 {
 	if (!temp) return;
 	ost << temp->data << " ";
-	output(ost, temp-left);
+	output(ost, temp->left);
 	output(ost, temp->right);
 }
 
