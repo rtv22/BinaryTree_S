@@ -33,5 +33,5 @@ SCENARIO ("reading", "[init]")
 {
    BinaryTree<int> obj;
    obj.reading("file2.txt");
-   REQUIRE(obj.search_result(1) == 1))
+   REQUIRE(obj.search_result(1) == 1));
 }
