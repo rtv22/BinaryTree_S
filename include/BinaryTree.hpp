@@ -56,11 +56,11 @@ BinaryTree<T>::~BinaryTree()
 template<typename T> 
 Node<T> *BinaryTree<T>::get_pointer(const T& value, Node<T>* temp)const
 {
-	if (temp == 0 || value == temp->element)
+	if (temp == 0 || value == temp->data)
 		return temp;
-	if (value > temp->element)
-		return get_pointer(value, temp->pRight);
-	else return get_pointer(value, temp->pLeft);
+	if (value > temp->data)
+		return get_pointer(value, temp->right);
+	else return get_pointer(value, temp->left);
 }
 
 template<typename T> 
