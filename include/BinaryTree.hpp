@@ -30,6 +30,9 @@ public:
 	void reading(const std::string&);
 	void output(std::ostream& ost, Node<T>*)const;
 	void writing(const std::string&)const;
+	bool search_result(const T& value)const;
+	Node<T> *BinaryTree<T>::get_pointer(const T& value, Node<T>* temp)const;
+	
 };
 
 template<typename T>
@@ -48,6 +51,22 @@ template<typename T>
 BinaryTree<T>::~BinaryTree()
 {
 	deleteNode(root);
+}
+
+template<typename T> 
+Node<T> *BinaryTree<T>::get_pointer(const T& value, Node<T>* temp)const
+{
+	if (temp == 0 || value == temp->element)
+		return temp;
+	if (value > temp->element)
+		return get_pointer(value, temp->pRight);
+	else return get_pointer(value, temp->pLeft);
+}
+
+template<typename T> 
+bool BinaryTree<T>::search_result(const T& value)const
+{
+	return get_pointer(value, root);
 }
 
 template<typename T>
