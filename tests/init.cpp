@@ -35,7 +35,7 @@ SCENARIO ("reading/writing", "[read/write]")
   obj.insert_node(1);
   obj.insert_node(2);
   obj.writing("file2.txt");
-  Tree<int> obj_1;
+  BinaryTree<int> obj_1;
   obj_1.reading("file2.txt");
   REQUIRE(obj_1.find_node(1, obj_1.root_())!= nullptr);
   REQUIRE(obj_1.find_node(2, obj_1.root_())!= nullptr);
