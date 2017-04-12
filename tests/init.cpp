@@ -28,10 +28,3 @@ SCENARIO("get root", "[get root]")
   obj.insert_node(4);
   REQUIRE(obj.root_() != 0);
 }
-
-SCENARIO ("reading", "[init]")
-{
-   BinaryTree<int> obj;
-   obj.reading("file2.txt");
-   REQUIRE(obj.search_result(1) == 1);
-}
