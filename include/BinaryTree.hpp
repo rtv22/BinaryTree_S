@@ -31,7 +31,7 @@ public:
 	void output(std::ostream& ost, Node<T>*)const;
 	void writing(const std::string&)const;
 	bool search_result(const T& value)const;
-	Node<T> *BinaryTree<T>::get_pointer(const T& value, Node<T>* temp)const;
+	Node<T>* get_pointer(const T& value, Node<T>* temp)const;
 	
 };
 
