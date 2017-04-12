@@ -37,6 +37,6 @@ SCENARIO ("reading/writing", "[read/write]")
   obj.writing("file2.txt");
   BinaryTree<int> obj_1;
   obj_1.reading("file2.txt");
-  REQUIRE(obj_1.find_node(3, obj_1.root_());
-  REQUIRE(obj_1.find_node(3, obj_1.root_());
+  REQUIRE(obj_1.find_node(3, obj_1.root_()));
+  REQUIRE(obj_1.find_node(3, obj_1.root_()));
 }
