@@ -29,9 +29,9 @@ SCENARIO("get root", "[get root]")
   REQUIRE(obj.root_() != 0);
 }
 
-SCENARIO ("reading", "[reading]")
+SCENARIO ("reading", "[init]")
 {
    BinaryTree<int> obj;
-   obj.reading("file1.txt");
-   REQUIRE(obj.search_result(1) == 1);
+   obj.reading("file2.txt");
+   REQUIRE(obj.search_result(1) == 1))
 }
