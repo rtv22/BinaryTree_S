@@ -11,6 +11,7 @@ struct Node
 	T data;
 	Node<T>* left;
 	Node<T>* right;
+	uint16_t CountElements = 0;
 };
 
 template <class T> 
@@ -114,6 +115,7 @@ void BinaryTree<T>::insert_node(const T&x)
 		else
 			buff->right = MyTree;
 	}
+	++CountElements;
 }
 
 template<typename T>
@@ -163,9 +165,10 @@ void BinaryTree<T>::output(ostream& ost, Node<T>* temp)const
 template<typename T>
 void BinaryTree<T>::writing(const std::string& filename)const
 {
-	ofstream fout(filename);
-	output(fout, root);
-	fout.close();
+	ofstream file_1(filename);
+	file_1 << CountElements << "\t";
+	output(file_1, root);
+	file_1.close();
 }
 
 template<typename T>
