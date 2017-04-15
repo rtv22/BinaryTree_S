@@ -11,7 +11,6 @@ struct Node
 	T data;
 	Node<T>* left;
 	Node<T>* right;
-	uint16_t CountElements = 0;
 };
 
 template <class T> 
@@ -19,6 +18,7 @@ class BinaryTree
 {
 private:
 	Node<T> *root;
+	uint16_t CountElements = 0;
 public:
 	BinaryTree();
 	~BinaryTree();
