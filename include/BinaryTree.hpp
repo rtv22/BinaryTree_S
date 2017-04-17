@@ -27,8 +27,7 @@ public:
 	void print()const;
 	Node<T>*root_()const;
 	Node<T> *find_node(const T&, Node<T>*)const;
-	void show(Node<T>*, unsigned int)const;
-	void out()const;
+	void output(ostream&, Node<T>*)const
 	void reading(const std::string&);
 	void writing(const std::string&)const;
 	bool search_result(const T& value)const;
@@ -156,10 +155,10 @@ void BinaryTree<T>::writing(const std::string& filename)const
 	file_1.close();
 }
 
-void tree<T>::output(ostream& ost, Node<T>* temp)const
+void BinaryTree<T>::output(ostream& ost, Node<T>* buff)const
 {
 	if (!temp) return;
 	ost << temp->data << " ";
-	output(ost, temp->left);
-	output(ost, temp->right);
+	output(ost, buff->left);
+	output(ost, buff->right);
 }
