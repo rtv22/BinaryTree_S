@@ -155,6 +155,7 @@ void BinaryTree<T>::writing(const std::string& filename)const
 	file_1.close();
 }
 
+template<typename T>
 void BinaryTree<T>::output(ostream& ost, Node<T>* buff)const
 {
 	if (!temp) return;
