@@ -28,6 +28,7 @@ public:
 	Node<T>*root_()const;
 	Node<T> *find_node(const T&, Node<T>*)const;
 	void show(Node<T>*, unsigned int)const;
+	void out()const;
 	void reading(const std::string&);
 	void writing(const std::string&)const;
 	bool search_result(const T& value)const;
