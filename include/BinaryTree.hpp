@@ -33,7 +33,7 @@ public:
 	bool search_result(const T& value)const;
 	Node<T>* get_pointer(const T& value, Node<T>* temp)const;
 	std::ostream& show(std::ostream&, const Node<T>*, unsigned int);
-	friend ostream& operator<< <>(std::ostream&, BinaryTree<T>*);
+	friend ostream& operator<<(std::ostream&, BinaryTree<T>*);
 
 };
 
