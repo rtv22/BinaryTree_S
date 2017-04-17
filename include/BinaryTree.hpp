@@ -29,7 +29,6 @@ public:
 	Node<T> *find_node(const T&, Node<T>*)const;
 	void show(Node<T>*, unsigned int)const;
 	void reading(const std::string&);
-	void output(std::ostream& ost, Node<T>*)const;
 	void writing(const std::string&)const;
 	bool search_result(const T& value)const;
 	Node<T>* get_pointer(const T& value, Node<T>* temp)const;
@@ -145,12 +144,6 @@ void BinaryTree<T>::reading(const std::string& filename)
 		insert_node(temp);
 	}
 	fin.close();
-}
-
-template<typename T>
-void BinaryTree<T>::print() const
-{
-	output(cout, this->root);
 }
 
 template<typename T>
