@@ -5,7 +5,7 @@
 
 using namespace std;
 
-template <class T> 
+template <class T>
 struct Node
 {
 	T data;
@@ -13,7 +13,7 @@ struct Node
 	Node<T>* right;
 };
 
-template <class T> 
+template <class T>
 class BinaryTree
 {
 private:
@@ -25,15 +25,16 @@ public:
 	void deleteNode(Node<T>* temp);
 	void insert_node(const T&);
 	void print()const;
-	Node<T>*root_()const;
+	Node<T>*root_();
 	Node<T> *find_node(const T&, Node<T>*)const;
 	void output(ostream&, Node<T>*)const;
 	void reading(const std::string&);
 	void writing(const std::string&)const;
 	bool search_result(const T& value)const;
 	Node<T>* get_pointer(const T& value, Node<T>* temp)const;
-	std::ostream& show(std::ostream&, Node<T>*, unsigned int);
-	
+	ostream& show(Node<T>*, unsigned int);
+	friend ostream& operator<< <>(std::ostream&, BinaryTree<T>*);
+
 };
 
 template<typename T>
@@ -43,7 +44,7 @@ BinaryTree<T>::BinaryTree()
 }
 
 template<class T>
-Node<T>*BinaryTree<T>::root_()const
+Node<T>*BinaryTree<T>::root_()
 {
 	return root;
 }
@@ -54,7 +55,7 @@ BinaryTree<T>::~BinaryTree()
 	deleteNode(root);
 }
 
-template<typename T> 
+template<typename T>
 Node<T> *BinaryTree<T>::get_pointer(const T& value, Node<T>* temp)const
 {
 	if (temp == 0 || value == temp->data)
@@ -64,7 +65,7 @@ Node<T> *BinaryTree<T>::get_pointer(const T& value, Node<T>* temp)const
 	else return get_pointer(value, temp->left);
 }
 
-template<typename T> 
+template<typename T>
 bool BinaryTree<T>::search_result(const T& value)const
 {
 	return get_pointer(value, root);
@@ -157,21 +158,21 @@ void BinaryTree<T>::writing(const std::string& filename)const
 }
 
 template <typename T>
-std::ostream& show(std::ostream& ost, Node<T>* temp, unsigned int level)
+std::ostream& show(Node<T>* temp, unsigned int level)
 {
-	if (!temp) return;
-	show(ost, temp->right, level + 1);
-	for (unsigned int i = 0; i < level; i++)
-		ost << "\t";
-	ost << temp->data;
-	show(ost, temp->left, level + 1);
-	return ost;
+	if (temp)
+	{
+		show(temp->left, level + 1);
+		for (unsigned int i = 0; i < level; i++)
+			std::cout << "-";
+		std::cout << temp->data;
+		show(temp->right, level + 1);
+	}
 }
 
 template <typename T>
-std::ostream& operator<<(std::ostream& ost,BinaryTree<T>& temp)
-{
-	if (!temp) return;
-	show(ost, temp.root, 0);
+ostream& operator<<(std::ostream& ost, BinaryTree<T>& temp)
+{	
+	show(temp.root_, 0);
 	return ost;
 }
