@@ -7,14 +7,14 @@ SCENARIO ("init", "[init]")
   REQUIRE(obj.root_() == nullptr);
 }
 
-SCENARIO ("Read and Write")
+SCENARIO ("output to cout")
 {
   BinaryTree<int> tree;
   tree.insert_node(3);
   tree.writing("1.txt");
   Binarytree <int> tree_1;
   tree_1.read("2.txt");
-  REQUIRE(tree.find_node(6, tree_1.root_())!= nullptr);
+  REQUIRE(tree.find_node(3, tree_1.root_())!= nullptr);
 }
 
 
