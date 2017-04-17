@@ -156,10 +156,10 @@ void BinaryTree<T>::writing(const std::string& filename)const
 }
 
 template<typename T>
-void BinaryTree<T>::output(ostream& ost, Node<T>* buff)const
+void BinaryTree<T>::output(ostream& ost, Node<T>* temp)const
 {
 	if (!temp) return;
 	ost << temp->data << " ";
-	output(ost, buff->left);
-	output(ost, buff->right);
+	output(ost, temp->left);
+	output(ost, temp->right);
 }
