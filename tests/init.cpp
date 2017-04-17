@@ -11,7 +11,7 @@ SCENARIO ("output to cout", "<<")
 {
   BinaryTree<int> tree;
   tree.insert_node(3);
-  REQUIRE(tree.show(tree.root_()) != nullptr, 3);
+  REQUIRE(tree.show(tree.root_())->data == 3, 3);
 }
 
 
