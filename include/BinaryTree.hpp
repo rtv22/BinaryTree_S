@@ -160,6 +160,7 @@ void BinaryTree<T>::output(ostream& ost, Node<T>* temp)const
 	ost << temp->data << " ";
 	output(ost, temp->left);
 	output(ost, temp->right);
+	show(root, 0);
 }
 
 template<typename T>
