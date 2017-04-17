@@ -11,7 +11,7 @@ SCENARIO ("output to cout", "<<")
 {
   BinaryTree<int> tree;
   tree.insert_node(3);
-  REQUIRE(tree.show(3), tree.root_());
+  REQUIRE(tree.show(3, tree.root_()));
 }
 
 
