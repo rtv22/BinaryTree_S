@@ -156,22 +156,10 @@ void BinaryTree<T>::writing(const std::string& filename)const
 	file_1.close();
 }
 
-template<typename T>
-void BinaryTree<T>::show(Node<T>* temp, unsigned int level)const
+void tree<T>::output(ostream& ost, Node<T>* temp)const
 {
-
-	if (temp)
-	{
-		show(temp->left, level + 1);
-		for (unsigned int i = 0; i < level; i++)
-			std::cout << "-";
-		std::cout << temp->data << std::endl;
-		show(temp->right, level + 1);
-	}
-}
-
-template<typename T>
-void BinaryTree<T>::out()const
-{
-	show(root, 0);
+	if (!temp) return;
+	ost << temp->data << " ";
+	output(ost, temp->left);
+	output(ost, temp->right);
 }
