@@ -154,16 +154,6 @@ void BinaryTree<T>::print() const
 }
 
 template<typename T>
-void BinaryTree<T>::output(ostream& ost, Node<T>* temp)const
-{
-	if (!temp) return;
-	ost << temp->data << " ";
-	output(ost, temp->left);
-	output(ost, temp->right);
-	show(root, 0);
-}
-
-template<typename T>
 void BinaryTree<T>::writing(const std::string& filename)const
 {
 	ofstream file_1(filename);
