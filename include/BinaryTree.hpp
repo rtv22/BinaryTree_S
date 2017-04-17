@@ -17,9 +17,9 @@ template <class T>
 class BinaryTree
 {
 private:
+	Node<T> *root;
 	uint16_t CountElements = 0;
 public:
-	Node<T> *root;
 	BinaryTree();
 	~BinaryTree();
 	void deleteNode(Node<T>* temp);
@@ -33,7 +33,7 @@ public:
 	bool search_result(const T& value)const;
 	Node<T>* get_pointer(const T& value, Node<T>* temp)const;
 	std::ostream& show(std::ostream&, const Node<T>*, unsigned int);
-	friend ostream& operator<<(std::ostream&, BinaryTree<T>*);
+	ostream& operator<<(std::ostream&, BinaryTree<T>*);
 
 };
 
@@ -41,12 +41,6 @@ template<typename T>
 BinaryTree<T>::BinaryTree()
 {
 	root = nullptr;
-}
-
-template<class T>
-Node<T>*BinaryTree<T>::root_()
-{
-	return root;
 }
 
 template<typename T>
