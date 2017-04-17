@@ -17,9 +17,9 @@ template <class T>
 class BinaryTree
 {
 private:
-	Node<T> *root;
 	uint16_t CountElements = 0;
 public:
+	Node<T> *root;
 	BinaryTree();
 	~BinaryTree();
 	void deleteNode(Node<T>* temp);
@@ -32,7 +32,7 @@ public:
 	void writing(const std::string&)const;
 	bool search_result(const T& value)const;
 	Node<T>* get_pointer(const T& value, Node<T>* temp)const;
-	ostream& show(Node<T>*, unsigned int);
+	std::ostream& show(std::ostream&, const Node<T>*, unsigned int);
 	friend ostream& operator<< <>(std::ostream&, BinaryTree<T>*);
 
 };
@@ -158,21 +158,19 @@ void BinaryTree<T>::writing(const std::string& filename)const
 }
 
 template <typename T>
-std::ostream& show(Node<T>* temp, unsigned int level)
+std::ostream& show(std::ostream& ost, const Node<T>* temp, unsigned int level)
 {
-	if (temp)
-	{
-		show(temp->left, level + 1);
-		for (unsigned int i = 0; i < level; i++)
-			std::cout << "-";
-		std::cout << temp->data;
-		show(temp->right, level + 1);
-	}
+	show(ost, temp->right, level + 1);
+	for (unsigned int i = 0; i < level; i++)
+		ost << "\t";
+	ost << temp->data << std::endl;
+	show(ost, temp->left, level + 1);
+	return ost;
 }
 
 template <typename T>
 ostream& operator<<(std::ostream& ost, BinaryTree<T>& temp)
 {	
-	show(temp.root_, 0);
+	show(ost, temp.root, 0);
 	return ost;
 }
