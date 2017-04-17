@@ -168,3 +168,9 @@ void BinaryTree<T>::show(Node<T>* temp, unsigned int level)const
 		show(temp->right, level + 1);
 	}
 }
+
+template<typename T>
+void BinaryTree<T>::out()const
+{
+	show(root, 0);
+}
