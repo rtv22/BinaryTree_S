@@ -13,7 +13,7 @@ SCENARIO ("output to cout")
   tree.insert_node(3);
   tree.writing("file1.txt");
   BinaryTree <int> tree_1;
-  tree_1.reading("file2.txt");
+  tree_1.reading("file1.txt");
   REQUIRE(tree_1.find_node(3, tree_1.root_())!= nullptr);
 }
 
