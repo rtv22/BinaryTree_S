@@ -29,9 +29,9 @@ SCENARIO("get root", "[get root]")
   REQUIRE(obj.root_() != 0);
 }
 
-//SCENARIO ("output to cout", "<<")
-//{
- //BinaryTree<int> tree;
-  //tree.insert_node(3);
-  //REQUIRE( std::cout << tree );
- //}
+SCENARIO ("output to cout", "<<")
+{
+ BinaryTree<int> tree;
+ tree.insert_node(3);
+ REQUIRE( std::cout << tree );
+}
