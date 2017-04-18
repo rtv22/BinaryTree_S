@@ -60,6 +60,12 @@ Node<T> *BinaryTree<T>::get_pointer(const T& value, Node<T>* temp)const
 }
 
 template<typename T>
+Node<T>* BinaryTree<T>::root_()
+{
+	return root;
+}
+
+template<typename T>
 bool BinaryTree<T>::search_result(const T& value)const
 {
 	return get_pointer(value, root);
