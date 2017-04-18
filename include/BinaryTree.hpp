@@ -151,7 +151,7 @@ void BinaryTree<T>::writing(const std::string& filename)const
 	file_1.close();
 }
 
-	
+template<typename T>	
 std::ostream& show(std::ostream& ost, Node<T>* temp, unsigned int level)
 {
 	show(ost, temp->right, level + 1);
@@ -161,7 +161,8 @@ std::ostream& show(std::ostream& ost, Node<T>* temp, unsigned int level)
 	show(ost, temp->left, level + 1);
 	return ost;
 }
-		
+
+template<typename T>	
 std::ostream& operator<<(ostream& ost, BinaryTree<T>& temp)
 {
 	show(ost, temp.root, 0);
