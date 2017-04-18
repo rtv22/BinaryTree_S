@@ -27,7 +27,6 @@ public:
 	void print()const;
 	Node<T>*root_();
 	Node<T> *find_node(const T&, Node<T>*)const;
-	void output(ostream&, Node<T>*)const;
 	void reading(const std::string&);
 	void writing(const std::string&)const;
 	bool search_result(const T& value)const;
