@@ -124,7 +124,8 @@ Node<T>* BinaryTree<T>::find_node(const T& value, Node<T>* temp) const
 		return find_node(value, temp->left);
 }
 
-void output(std::ostream& ost,const Node<T>* temp)const
+template<typename T>
+void output(std::ostream& ost,const Node<T>* temp)
 {
 	if (temp == nullptr)
 	{
@@ -133,8 +134,8 @@ void output(std::ostream& ost,const Node<T>* temp)const
 	else
 	{	
 		ost << temp->data << "	";
-		output(ost, temp->pLeft);
-		output(ost, temp->pRight);
+		output(ost, temp->left);
+		output(ost, temp->right);
 	}
 }
 
