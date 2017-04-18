@@ -32,8 +32,8 @@ public:
 	void writing(const std::string&)const;
 	bool search_result(const T& value)const;
 	Node<T>* get_pointer(const T& value, Node<T>* temp)const;
-	std::ostream& show(std::ostream&, Node<T>*, unsigned int);
-	friend std::ostream& operator<< <> (ostream&, BinaryTree<T>&);
+	friend std::ostream& show(std::ostream&, Node<T>*, unsigned int);
+	friend std::ostream& operator<<(ostream&, BinaryTree<T>&);
 
 };
 
