@@ -28,7 +28,7 @@ public:
 	Node<T>*root_();
 	Node<T> *find_node(const T&, Node<T>*)const;
 	void reading(const std::string&);
-	void output(std::ostream&,const Node<T>*)const;
+	void output(std::ostream&,const Node<T>*);
 	void writing(const std::string&)const;
 	bool search_result(const T& value)const;
 	Node<T>* get_pointer(const T& value, Node<T>* temp)const;
