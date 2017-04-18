@@ -32,8 +32,22 @@ public:
 	void writing(const std::string&)const;
 	bool search_result(const T& value)const;
 	Node<T>* get_pointer(const T& value, Node<T>* temp)const;
-	std::ostream& show(std::ostream&, const Node<T>*, unsigned int);
-	friend std::ostream& operator<< <> (std::ostream&, BinaryTree<T>&);
+	
+		std::ostream& show(std::ostream& ost, Node<T>* temp, unsigned int level)
+	{
+		show(ost, temp->right, level + 1);
+		for (unsigned int i = 0; i < level; i++)
+			ost << "\t";
+		ost << temp->data << std::endl;
+		show(ost, temp->left, level + 1);
+		return ost;
+	}
+		
+	friend std::ostream& operator<<(ostream& ost, BinaryTree<T>& temp)
+	{
+		show(ost, temp.root, 0);
+		return ost;
+	}
 
 };
 
@@ -149,22 +163,4 @@ void BinaryTree<T>::writing(const std::string& filename)const
 	file_1 << CountElements << "\t";
 	output(file_1, root);
 	file_1.close();
-}
-
-template <typename T>
-std::ostream& show(std::ostream& ost, const Node<T>* temp, unsigned int level)
-{
-	show(ost, temp->right, level + 1);
-	for (unsigned int i = 0; i < level; i++)
-		ost << "\t";
-	ost << temp->data << std::endl;
-	show(ost, temp->left, level + 1);
-	return ost;
-}
-
-template <typename T>
-std::ostream& operator<<(std::ostream& ost, BinaryTree<T>& temp)
-{	
-	show(ost, temp.root, 0);
-	return ost;
 }
