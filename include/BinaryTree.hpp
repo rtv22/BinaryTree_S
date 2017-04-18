@@ -3,7 +3,8 @@
 #include <fstream> 
 #include <cstdint>
 
-using namespace std;
+template <typename T>
+std::ostream& operator<<(std::ostream&, const BinarySearchTree<T>&);
 
 template <class T>
 struct Node
@@ -33,7 +34,7 @@ public:
 	bool search_result(const T& value)const;
 	Node<T>* get_pointer(const T& value, Node<T>* temp)const;
 	ostream& show(std::ostream&, const Node<T>*, unsigned int);
-	friend ostream& operator<< <> (std::ostream&, BinaryTree<T>*);
+	friend std::ostream& operator<< <> (std::ostream&, BinaryTree<T>*);
 
 };
 
