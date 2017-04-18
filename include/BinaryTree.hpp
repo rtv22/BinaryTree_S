@@ -28,6 +28,7 @@ public:
 	Node<T>*root_();
 	Node<T> *find_node(const T&, Node<T>*)const;
 	void reading(const std::string&);
+	void output(std::ostream&,const Node<T>*)const;
 	void writing(const std::string&)const;
 	bool search_result(const T& value)const;
 	Node<T>* get_pointer(const T& value, Node<T>* temp)const;
@@ -121,6 +122,20 @@ Node<T>* BinaryTree<T>::find_node(const T& value, Node<T>* temp) const
 		return find_node(value, temp->right);
 	else
 		return find_node(value, temp->left);
+}
+
+void output(std::ostream& ost,const Node<T>* temp)const
+{
+	if (temp == nullptr)
+	{
+		return;
+	}
+	else
+	{	
+		ost << temp->data << "	";
+		output(ost, temp->pLeft);
+		output(ost, temp->pRight);
+	}
 }
 
 template<typename T>
