@@ -32,7 +32,7 @@ public:
 	void writing(const std::string&)const;
 	bool search_result(const T& value)const;
 	Node<T>* get_pointer(const T& value, Node<T>* temp)const;
-	ostream& show(std::ostream&, const Node<T>*, unsigned int);
+	std::ostream& show(std::ostream&, const Node<T>*, unsigned int);
 	friend std::ostream& operator<< <> (std::ostream&, BinaryTree<T>&);
 
 };
@@ -163,7 +163,7 @@ std::ostream& show(std::ostream& ost, const Node<T>* temp, unsigned int level)
 }
 
 template <typename T>
-ostream& operator<<(std::ostream& ost, BinaryTree<T>& temp)
+std::ostream& operator<<(std::ostream& ost, BinaryTree<T>& temp)
 {	
 	show(ost, temp.root, 0);
 	return ost;
