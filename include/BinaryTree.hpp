@@ -13,6 +13,12 @@ struct Node
 	Node<T>* right;
 };
 
+template<typename T>
+class BinaryTree; 
+
+template<typename T>
+std::ostream& operator<<(ostream& ost, BinaryTree<T>& temp);
+
 template <class T>
 class BinaryTree
 {
@@ -33,7 +39,7 @@ public:
 	bool search_result(const T& value)const;
 	Node<T>* get_pointer(const T& value, Node<T>* temp)const;
 	friend std::ostream& show(std::ostream&, Node<T>*, unsigned int);
-	friend std::ostream& operator<<(ostream&, BinaryTree<T>&);
+	friend std::ostream& operator<<<>(ostream&, BinaryTree<T>&);
 
 };
 
