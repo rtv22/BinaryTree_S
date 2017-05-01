@@ -29,8 +29,8 @@ public:
 	Node<T>*root_();
 	void deleteNode(Node<T>* temp);
 	void writing(const std::string& filename)const;
-	void output(std::ostream& ost, const Node<T>* temp);
-	friend ostream& operator<< <>(std::ostream&, const BinaryTree<T>&);
+	void output(ostream& ost, const Node<T>* temp);
+	friend ostream& operator<< <>(ostream&, const BinaryTree<T>&);
 
 };
 
