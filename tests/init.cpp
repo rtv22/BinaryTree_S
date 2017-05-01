@@ -33,5 +33,5 @@ SCENARIO ("output to cout", "<<")
 {
  BinaryTree<int> tree;
  tree.insert_node(3);
-// REQUIRE( std::cout << tree );
+ REQUIRE( std::cout << tree );
 }
