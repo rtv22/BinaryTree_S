@@ -1,68 +1,45 @@
 #include <iostream> 
 #include <string> 
 #include <fstream> 
-#include <cstdint>
+#include <cstdint> 
 
 using namespace std;
 
-template <class T>
-struct Node
-{
+template <typename T>
+struct Node {
+	Node *left;
+	Node *right;
 	T data;
-	Node<T>* left;
-	Node<T>* right;
 };
 
-template<typename T>
-class BinaryTree; 
 
-template<typename T>
-std::ostream& operator<<(ostream& ost, BinaryTree<T>& temp);
-
-template <class T>
+template <typename T>
 class BinaryTree
 {
 private:
-	Node<T> *root;
-	uint16_t CountElements = 0;
+	Node<T>* root;
+	int CountElements = 0;
+
 public:
 	BinaryTree();
 	~BinaryTree();
-	void deleteNode(Node<T>* temp);
-	void insert_node(const T&);
-	void print()const;
-	Node<T>*root_();
+	BinaryTree(const std::initializer_list<T>&);
+	void _deleteElements(Node<T>*);
+	unsigned int count() const;
+	void BinaryTree<T>::insert_node(const T&x);
 	Node<T> *find_node(const T&, Node<T>*)const;
-	void reading(const std::string&);
-	void output(std::ostream&,const Node<T>*);
-	void writing(const std::string&)const;
-	bool search_result(const T& value)const;
-	Node<T>* get_pointer(const T& value, Node<T>* temp)const;
-	friend std::ostream& show(std::ostream&, Node<T>*, unsigned int);
-	friend std::ostream& operator<<<>(ostream&, BinaryTree<T>&);
+	Node<T>*root_();
+	void BinaryTree<T>::deleteNode(Node<T>* temp);
+	void BinaryTree<T>::writing(const std::string& filename)const;
+	void output(std::ostream& ost, const Node<T>* temp);
+	friend std::ostream& operator<< <> (std::ostream&, const BinaryTree<T>&);
 
 };
 
-template<typename T>
+template <typename T>
 BinaryTree<T>::BinaryTree()
 {
 	root = nullptr;
-}
-
-template<typename T>
-BinaryTree<T>::~BinaryTree()
-{
-	deleteNode(root);
-}
-
-template<typename T>
-Node<T> *BinaryTree<T>::get_pointer(const T& value, Node<T>* temp)const
-{
-	if (temp == 0 || value == temp->data)
-		return temp;
-	if (value > temp->data)
-		return get_pointer(value, temp->right);
-	else return get_pointer(value, temp->left);
 }
 
 template<typename T>
@@ -71,30 +48,12 @@ Node<T>* BinaryTree<T>::root_()
 	return root;
 }
 
-template<typename T>
-bool BinaryTree<T>::search_result(const T& value)const
+template <typename T>
+BinaryTree<T>::~BinaryTree()
 {
-	return get_pointer(value, root);
+	deleteNode(root);
 }
 
-template<typename T>
-void BinaryTree<T>::deleteNode(Node<T>* temp)
-{
-	if (!temp)
-		return;
-	if (temp->left)
-	{
-		deleteNode(temp->left);
-		temp->left = nullptr;
-	}
-
-	if (temp->right)
-	{
-		deleteNode(temp->right);
-		temp->right = nullptr;
-	}
-	delete temp;
-}
 
 template<typename T>
 void BinaryTree<T>::insert_node(const T&x)
@@ -125,6 +84,7 @@ void BinaryTree<T>::insert_node(const T&x)
 	++CountElements;
 }
 
+
 template<typename T>
 Node<T>* BinaryTree<T>::find_node(const T& value, Node<T>* temp) const
 {
@@ -136,38 +96,56 @@ Node<T>* BinaryTree<T>::find_node(const T& value, Node<T>* temp) const
 		return find_node(value, temp->left);
 }
 
+
+template <typename T>
+void BinaryTree<T>::_deleteElements(Node<T>* temp)
+{
+	if (!temp)
+	{
+		throw "error";
+	}
+	_deleteElements(temp->left);
+	_deleteElements(temp->right);
+	delete node;
+}
+
 template<typename T>
-void output(std::ostream& ost,const Node<T>* temp)
+void BinaryTree<T>::deleteNode(Node<T>* temp)
+{
+	if (!temp)
+	{
+		throw "error";
+	}
+	if (temp->left)
+	{
+		deleteNode(temp->left);
+		temp->left = nullptr;
+	}
+
+	if (temp->right)
+	{
+		deleteNode(temp->right);
+		temp->right = nullptr;
+	}
+	delete temp;
+}
+
+template<typename T>
+void output(std::ostream& ost, const Node<T>* temp)
 {
 	if (temp == nullptr)
 	{
+		throw "error";
 		return;
 	}
 	else
-	{	
+	{
 		ost << temp->data << "	";
 		output(ost, temp->left);
 		output(ost, temp->right);
 	}
 }
 
-template<typename T>
-void BinaryTree<T>::reading(const std::string& filename)
-{
-	ifstream fin(filename);
-	if (root != nullptr)
-		deleteNode(root);
-
-	int k;
-	fin >> k;
-	T temp;
-	for (int i = 0; i < k; ++i)
-	{
-		fin >> temp;
-		insert_node(temp);
-	}
-	fin.close();
-}
 
 template<typename T>
 void BinaryTree<T>::writing(const std::string& filename)const
@@ -178,20 +156,26 @@ void BinaryTree<T>::writing(const std::string& filename)const
 	file_1.close();
 }
 
-template<typename T>	
-std::ostream& show(std::ostream& ost, Node<T>* temp, unsigned int level)
+
+template <typename T>
+std::ostream& show(std::ostream& os, const Node<T>* node, unsigned int level)
 {
-	show(ost, temp->right, level + 1);
+	if (!node)
+		return os;
+	show(os, node->right, level + 1);
 	for (unsigned int i = 0; i < level; i++)
-	ost << "\t";
-	ost << temp->data << std::endl;
-	show(ost, temp->left, level + 1);
-	return ost;
+		os << "\t";
+	os << node->data << std::endl;
+	show(os, node->left, level + 1);
+	return os;
 }
 
-template<typename T>	
-std::ostream& operator<<(ostream& ost, BinaryTree<T>& temp)
+
+template <typename T>
+std::ostream& operator<<(std::ostream& os, const BinaryTree<T>& temp)
 {
-	show(ost, temp.root, 0);
-	return ost;
+	if (!temp.root)
+		throw "error";
+	show(os, temp.root, 0);
+	return os;
 }
