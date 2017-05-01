@@ -179,14 +179,3 @@ std::ostream& operator<<(std::ostream& ost, const BinaryTree<T>& bst)
 	show(ost, bst.root, 0);
 	return ost;
 }
-
-int main()
-{
-	BinaryTree<int>tree;
-	tree.insert_node(2);
-	tree.insert_node(3);
-	tree.insert_node(4);
-	tree.insert_node(11);
-	cout << tree;
-	system ("pause");
-}
