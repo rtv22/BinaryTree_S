@@ -22,7 +22,6 @@ private:
 public:
 	BinaryTree();
 	~BinaryTree();
-	BinaryTree(const std::initializer_list<T>&);
 	unsigned int count() const;
 	void insert_node(const T&x);
 	Node<T> *find_node(const T&, Node<T>*)const;
@@ -30,7 +29,7 @@ public:
 	void deleteNode(Node<T>* temp);
 	void writing(const std::string& filename)const;
 	void output(ostream& ost, const Node<T>* temp);
-	friend ostream& operator<< <>(ostream&, const BinaryTree<T>&);
+	friend std::ostream& operator<< <>(ostream&, const BinaryTree<T>&);
 
 };
 
