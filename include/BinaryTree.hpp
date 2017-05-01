@@ -12,7 +12,6 @@ struct Node {
 	T data;
 };
 
-
 template <typename T>
 class BinaryTree
 {
@@ -31,7 +30,7 @@ public:
 	void deleteNode(Node<T>* temp);
 	void writing(const std::string& filename)const;
 	void output(std::ostream& ost, const Node<T>* temp);
-	friend ostream& operator<<<>(std::ostream&, const BinaryTree<T>&);
+	friend ostream& operator<<(std::ostream&, const BinaryTree<T>&);
 
 };
 
