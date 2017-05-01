@@ -26,11 +26,11 @@ public:
 	BinaryTree(const std::initializer_list<T>&);
 	void _deleteElements(Node<T>*);
 	unsigned int count() const;
-	void BinaryTree<T>::insert_node(const T&x);
+	void insert_node(const T&x);
 	Node<T> *find_node(const T&, Node<T>*)const;
 	Node<T>*root_();
-	void BinaryTree<T>::deleteNode(Node<T>* temp);
-	void BinaryTree<T>::writing(const std::string& filename)const;
+	void deleteNode(Node<T>* temp);
+	void writing(const std::string& filename)const;
 	void output(std::ostream& ost, const Node<T>* temp);
 	friend std::ostream& operator<< <> (std::ostream&, const BinaryTree<T>&);
 
@@ -131,7 +131,7 @@ void BinaryTree<T>::deleteNode(Node<T>* temp)
 }
 
 template<typename T>
-void output(std::ostream& ost, const Node<T>* temp)
+void BinaryTree<T>::output(std::ostream& ost, const Node<T>* temp)
 {
 	if (temp == nullptr)
 	{
@@ -158,24 +158,35 @@ void BinaryTree<T>::writing(const std::string& filename)const
 
 
 template <typename T>
-std::ostream& show(std::ostream& os, const Node<T>* node, unsigned int level)
+std::ostream& show(std::ostream& ost, const Node<T>* node, unsigned int level)
 {
 	if (!node)
-		return os;
-	show(os, node->right, level + 1);
+		return ost;
+	show(ost, node->right, level + 1);
 	for (unsigned int i = 0; i < level; i++)
-		os << "\t";
-	os << node->data << std::endl;
-	show(os, node->left, level + 1);
-	return os;
+		ost << "\t";
+	ost << node->data << std::endl;
+	show(ost, node->left, level + 1);
+	return ost;
 }
 
 
 template <typename T>
-std::ostream& operator<<(std::ostream& os, const BinaryTree<T>& temp)
+std::ostream& operator<<(std::ostream& ost, const BinaryTree<T>& bst)
 {
-	if (!temp.root)
+	if (!bst.root)
 		throw "error";
-	show(os, temp.root, 0);
-	return os;
+	show(ost, bst.root, 0);
+	return ost;
+}
+
+int main()
+{
+	BinaryTree<int>tree;
+	tree.insert_node(2);
+	tree.insert_node(3);
+	tree.insert_node(4);
+	tree.insert_node(11);
+	cout << tree;
+	system ("pause");
 }
