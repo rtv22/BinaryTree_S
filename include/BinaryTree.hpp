@@ -37,7 +37,7 @@ public:
 	void deleteNode(Node<T>* temp);
 	void writing(const std::string& filename)const;
 	void output(std::ostream& ost, const Node<T>* temp);
-	friend std::ostream& operator<<(std::ostream&, const BinaryTree<T>&);
+	friend std::ostream& operator<<<>(std::ostream&, const BinaryTree<T>&);
 
 };
 
