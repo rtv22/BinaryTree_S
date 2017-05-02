@@ -121,22 +121,6 @@ void BinaryTree<T>::deleteNode(Node<T>* temp)
 }
 
 template<typename T>
-std::ostream& show(std::ostream& ost, const Node<T>* temp)
-{
-	if (temp == nullptr)
-	{
-		throw "error";
-	}
-	else
-	{
-		ost << temp->data << "	";
-		output(ost, temp->left);
-		output(ost, temp->right);
-	}
-}
-
-
-template<typename T>
 void BinaryTree<T>::writing(const std::string& filename)const
 {
 	ofstream file_1(filename);
