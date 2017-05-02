@@ -24,13 +24,14 @@ public:
 	BinaryTree();
 	~BinaryTree();
 	BinaryTree(const std::initializer_list<T>&);
+	void _deleteElements(Node<T>*);
 	unsigned int count() const;
 	void insert_node(const T&x);
-	Node<T>* root_();
 	Node<T> *find_node(const T&, Node<T>*)const;
+	Node<T>*root_();
 	void deleteNode(Node<T>* temp);
 	void writing(const std::string& filename)const;
-	void output(std::ostream& ost, const Node<T>* temp);
+	friend std::ostream& output(std::ostream& ost, const Node<T>* temp);
 	friend std::ostream& operator<< <> (std::ostream&, const BinaryTree<T>&);
 
 };
@@ -96,7 +97,28 @@ Node<T>* BinaryTree<T>::find_node(const T& value, Node<T>* temp) const
 }
 
 template<typename T>
-void BinaryTree<T>::output(std::ostream& ost, const Node<T>* temp)
+void BinaryTree<T>::deleteNode(Node<T>* temp)
+{
+	if (!temp)
+	{
+		throw "error";
+	}
+	if (temp->left)
+	{
+		deleteNode(temp->left);
+		temp->left = nullptr;
+	}
+
+	if (temp->right)
+	{
+		deleteNode(temp->right);
+		temp->right = nullptr;
+	}
+	delete temp;
+}
+
+template<typename T>
+std::ostream& show(std::ostream& ost, const Node<T>* temp)
 {
 	if (temp == nullptr)
 	{
