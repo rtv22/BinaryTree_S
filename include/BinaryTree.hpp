@@ -17,7 +17,7 @@ template <typename T>
 class BinaryTree
 {
 private:
-	Node<T>*root_();
+	Node<T>*root();
 	int CountElements = 0;
 
 public:
@@ -25,14 +25,14 @@ public:
 	~BinaryTree();
 	BinaryTree(const std::initializer_list<T>&);
 	void _deleteElements(Node<T>*);
-	Node<T>* root;
+	Node<T>* root_;
 	unsigned int count() const;
 	void insert_node(const T&x);
 	Node<T> *find_node(const T&, Node<T>*)const;
 	void deleteNode(Node<T>* temp);
 	void writing(const std::string& filename)const;
 	friend std::ostream& output(std::ostream& ost, const Node<T>* temp);
-	friend std::ostream& operator<<(std::ostream&, const BinaryTree<T>&);
+	friend std::ostream& operator<<<>(std::ostream&, const BinaryTree<T>&);
 
 };
 
