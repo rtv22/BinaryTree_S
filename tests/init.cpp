@@ -1,10 +1,10 @@
 #include <BinaryTree.hpp>
 #include <catch.hpp>
 
-/*SCENARIO ("init", "[init]")
+SCENARIO ("init", "[init]")
 {
   BinaryTree<int> obj;
- // REQUIRE(obj.root_() == nullptr);
+  REQUIRE(obj.root_() == nullptr);
 }
 
 SCENARIO("insert", "[insert]")
