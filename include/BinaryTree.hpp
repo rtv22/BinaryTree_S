@@ -24,11 +24,9 @@ public:
 	BinaryTree();
 	~BinaryTree();
 	BinaryTree(const std::initializer_list<T>&);
-	void _deleteElements(Node<T>*);
 	unsigned int count() const;
 	void insert_node(const T&x);
 	Node<T> *find_node(const T&, Node<T>*)const;
-	Node<T>*root_();
 	void deleteNode(Node<T>* temp);
 	void writing(const std::string& filename)const;
 	void output(std::ostream& ost, const Node<T>* temp);
