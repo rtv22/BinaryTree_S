@@ -58,7 +58,7 @@ BinaryTree<T>::~BinaryTree()
 template<typename T>
 void BinaryTree<T>::insert_node(const T&x)
 {
-	if (find_node(x, root_())) return;
+	if (find_node(x, root())) return;
 	Node<T>* MyTree = new Node<T>;
 	MyTree->data = x;
 	MyTree->left = MyTree->right = 0;
