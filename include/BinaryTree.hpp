@@ -17,7 +17,7 @@ template <typename T>
 class BinaryTree
 {
 private:
-	Node<T>*root();
+	Node<T>*root;
 	int CountElements = 0;
 
 public:
