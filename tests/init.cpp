@@ -4,7 +4,7 @@
 SCENARIO ("init", "[init]")
 {
   BinaryTree<int> obj;
-  REQUIRE(obj.root_() == nullptr);
+ // REQUIRE(obj.root_() == nullptr);
 }
 
 SCENARIO("insert", "[insert]")
@@ -33,5 +33,5 @@ SCENARIO ("output to cout", "<<")
 {
  BinaryTree<int> tree;
  tree.insert_node(3);
-// REQUIRE( std::cout << tree );
+ REQUIRE( std::cout << tree );
 }
