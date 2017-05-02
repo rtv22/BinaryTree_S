@@ -123,7 +123,6 @@ std::ostream& show(std::ostream& ost, const Node<T>* temp)
 	if (temp == nullptr)
 	{
 		throw "error";
-		return;
 	}
 	else
 	{
