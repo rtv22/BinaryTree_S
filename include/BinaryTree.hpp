@@ -28,8 +28,6 @@ private:
 public:
 	BinaryTree();
 	~BinaryTree();
-	BinaryTree(const std::initializer_list<T>&);
-	void _deleteElements(Node<T>*);
 	Node<T>* root_();
 	unsigned int count() const;
 	void insert_node(const T&x);
