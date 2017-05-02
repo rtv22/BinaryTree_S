@@ -17,7 +17,6 @@ template <typename T>
 class BinaryTree
 {
 private:
-	Node<T>* root;
 	int CountElements = 0;
 
 public:
@@ -25,6 +24,7 @@ public:
 	~BinaryTree();
 	BinaryTree(const std::initializer_list<T>&);
 	void _deleteElements(Node<T>*);
+	Node<T>* root;
 	unsigned int count() const;
 	void insert_node(const T&x);
 	Node<T> *find_node(const T&, Node<T>*)const;
