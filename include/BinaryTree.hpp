@@ -26,6 +26,7 @@ public:
 	BinaryTree(const std::initializer_list<T>&);
 	unsigned int count() const;
 	void insert_node(const T&x);
+	Node<T>* root_();
 	Node<T> *find_node(const T&, Node<T>*)const;
 	void deleteNode(Node<T>* temp);
 	void writing(const std::string& filename)const;
@@ -92,40 +93,6 @@ Node<T>* BinaryTree<T>::find_node(const T& value, Node<T>* temp) const
 		return find_node(value, temp->right);
 	else
 		return find_node(value, temp->left);
-}
-
-
-template <typename T>
-void BinaryTree<T>::_deleteElements(Node<T>* temp)
-{
-	if (!temp)
-	{
-		throw "error";
-	}
-	_deleteElements(temp->left);
-	_deleteElements(temp->right);
-	delete node;
-}
-
-template<typename T>
-void BinaryTree<T>::deleteNode(Node<T>* temp)
-{
-	if (!temp)
-	{
-		throw "error";
-	}
-	if (temp->left)
-	{
-		deleteNode(temp->left);
-		temp->left = nullptr;
-	}
-
-	if (temp->right)
-	{
-		deleteNode(temp->right);
-		temp->right = nullptr;
-	}
-	delete temp;
 }
 
 template<typename T>
