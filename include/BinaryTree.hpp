@@ -12,7 +12,13 @@ struct Node {
 	T data;
 };
 
-template <class T>
+template <typename T>
+class BinaryTree;
+
+template <typename T>
+std::ostream& operator<<(std::ostream&, const BinaryTree<T>&);
+
+template <typename T>
 class BinaryTree
 {
 private:
@@ -29,7 +35,6 @@ public:
 	void deleteNode(Node<T>* temp);
 	void writing(const std::string& filename)const;
 	friend std::ostream& operator<<<>(std::ostream&, const BinaryTree<T>&);
-
 };
 
 template <typename T>
@@ -137,11 +142,9 @@ std::ostream& output(std::ostream& ost, const Node<T>* node, unsigned int level)
 }
 
 
-template <typename T> inline
+template <typename T>
 std::ostream& operator<<(std::ostream& ost, const BinaryTree<T>& temp)
 {
-	//if (!temp.root)
-		//throw "error";
 	output(ost, temp.root, 0);
 	return ost;
 }
