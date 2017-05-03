@@ -6,17 +6,17 @@
 using namespace std;
 
 template <typename T>
+class BinaryTree;
+
+template <typename T>
+std::ostream& operator<<<T>(std::ostream&, const BinaryTree<T>&);
+
+template <typename T>
 struct Node {
 	Node *left;
 	Node *right;
 	T data;
 };
-
-template <typename T>
-class BinaryTree;
-
-template <typename T>
-std::ostream& operator<<(std::ostream&, const BinaryTree<T>&);
 
 template <typename T>
 class BinaryTree
