@@ -23,7 +23,7 @@ class BinaryTree
 {
 private:
 	Node<T>*root;
-	int CountElements = 0;
+	int CountElements;
 
 public:
 	BinaryTree();
@@ -52,6 +52,7 @@ Node<T>* BinaryTree<T>::root_()
 template <typename T>
 BinaryTree<T>::~BinaryTree()
 {
+	CountElements = 0;
 	deleteNode(root);
 }
 
