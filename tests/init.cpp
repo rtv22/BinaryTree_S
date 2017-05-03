@@ -25,7 +25,7 @@ SCENARIO("find_node", "[find_node]")
 
 SCENARIO("insert", "[insert]")
 {
-  Tree<int> obj;
+  BinaryTree<int> obj;
   obj.insert_node(3);
   REQUIRE(obj.find_node(3, obj.root_())->data == 3);
 }
