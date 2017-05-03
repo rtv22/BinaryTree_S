@@ -6,7 +6,7 @@
 using namespace std;
 
 template <typename T>
-friend std::ostream& operator<<<>(std::ostream&, const BinaryTree<T>&);
+std::ostream& operator<<<>(std::ostream&, const BinaryTree<T>&);
 
 template <typename T>
 struct Node {
