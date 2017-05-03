@@ -102,10 +102,10 @@ Node<T>* BinaryTree<T>::find_node(const T& value, Node<T>* temp) const
 template<typename T>
 void BinaryTree<T>::deleteNode(Node<T>* temp)
 {
-	if (!temp)
-	{
-		throw "error";
-	}
+	//if (!temp)
+	//{
+		//throw "error";
+	//}
 	if (temp->left)
 	{
 		deleteNode(temp->left);
@@ -147,8 +147,8 @@ std::ostream& show(std::ostream& ost, const Node<T>* node, unsigned int level)
 template <typename T>
 std::ostream& operator<<(std::ostream& ost, const BinaryTree<T>& temp)
 {
-	if (!temp.root)
-		throw "error";
+	//if (!temp.root)
+		//throw "error";
 	show(ost, temp.root, 0);
 	return ost;
 }
