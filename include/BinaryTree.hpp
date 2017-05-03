@@ -13,12 +13,6 @@ struct Node {
 };
 
 template <typename T>
-class BinaryTree;
-
-template <typename T>
-std::ostream& operator<<(std::ostream&, const BinaryTree<T>&);
-
-template <typename T>
 class BinaryTree
 {
 private:
@@ -28,7 +22,7 @@ private:
 public:
 	BinaryTree();
 	~BinaryTree();
-	Node<T>* root_();
+	Node<T>* root_()const;
 	unsigned int count() const;
 	void insert_node(const T&x);
 	Node<T> *find_node(const T&, Node<T>*)const;
@@ -45,7 +39,7 @@ BinaryTree<T>::BinaryTree()
 }
 
 template<typename T>
-Node<T>* BinaryTree<T>::root_()
+Node<T>* BinaryTree<T>::root_() const
 {
 	return root;
 }
