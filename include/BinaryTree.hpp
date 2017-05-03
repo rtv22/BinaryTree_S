@@ -12,7 +12,7 @@ struct Node {
 	T data;
 };
 
-template <typename T>
+template <class T>
 class BinaryTree
 {
 private:
