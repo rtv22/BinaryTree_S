@@ -41,6 +41,7 @@ template <typename T>
 BinaryTree<T>::BinaryTree()
 {
 	root = nullptr;
+	CountElements = 0;
 }
 
 template<typename T>
@@ -52,7 +53,6 @@ Node<T>* BinaryTree<T>::root_()
 template <typename T>
 BinaryTree<T>::~BinaryTree()
 {
-	CountElements = 0;
 	deleteNode(root);
 }
 
