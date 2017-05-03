@@ -28,7 +28,7 @@ public:
 	Node<T> *find_node(const T&, Node<T>*)const;
 	void deleteNode(Node<T>* temp);
 	void writing(const std::string& filename)const;
-	friend std::ostream& output<>(std::ostream& ost, const Node<T>* temp, unsigned int level);
+	friend std::ostream& output(std::ostream& ost, const Node<T>* temp, unsigned int level);
 	friend std::ostream& operator<<<>(std::ostream&, const BinaryTree<T>&);
 
 };
@@ -125,7 +125,7 @@ void BinaryTree<T>::writing(const std::string& filename)const
 
 
 template <typename T>
-std::ostream& output<T>(std::ostream& ost, const Node<T>* node, unsigned int level)
+std::ostream& output(std::ostream& ost, const Node<T>* node, unsigned int level)
 {
 	if (!node)
 		return ost;
@@ -139,7 +139,7 @@ std::ostream& output<T>(std::ostream& ost, const Node<T>* node, unsigned int lev
 
 
 template <typename T>
-std::ostream& operator<<<T>(std::ostream& ost, const BinaryTree<T>& temp)
+std::ostream& operator<<<>(std::ostream& ost, const BinaryTree<T>& temp)
 {
 	//if (!temp.root)
 		//throw "error";
