@@ -138,7 +138,7 @@ std::ostream& output(std::ostream& ost, const Node<T>* node, unsigned int level)
 
 
 template <typename T>
-std::ostream& operator<<<>(std::ostream& ost, const BinaryTree<T>& temp)
+std::ostream& operator<<(std::ostream& ost, const BinaryTree<T>& temp)
 {
 	//if (!temp.root)
 		//throw "error";
