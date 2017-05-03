@@ -8,7 +8,7 @@ using namespace std;
 template<typename T>
 class BinaryTree; 
  
-template<typename T>
+template<>
 std::ostream& operator<<(ostream& ost, BinaryTree<T>& temp);
 
 template <typename T>
