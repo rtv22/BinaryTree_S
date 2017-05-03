@@ -149,6 +149,6 @@ std::ostream& operator<<(std::ostream& ost, const BinaryTree<T>& temp)
 {
 	//if (!temp.root)
 		//throw "error";
-	show(ost, temp.root, 0);
+	output(ost, temp.root, 0);
 	return ost;
 }
