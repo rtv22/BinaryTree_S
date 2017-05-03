@@ -131,15 +131,15 @@ void BinaryTree<T>::writing(const std::string& filename)const
 
 
 template <typename T>
-std::ostream& show(std::ostream& ost, const Node<T>* node, unsigned int level)
+std::ostream& output(std::ostream& ost, const Node<T>* node, unsigned int level)
 {
 	if (!node)
 		return ost;
-	show(ost, node->right, level + 1);
+	output(ost, node->right, level + 1);
 	for (unsigned int i = 0; i < level; i++)
 		ost << "\t";
 	ost << node->data << std::endl;
-	show(ost, node->left, level + 1);
+	output(ost, node->left, level + 1);
 	return ost;
 }
 
