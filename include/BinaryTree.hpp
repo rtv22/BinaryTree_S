@@ -137,7 +137,7 @@ std::ostream& output(std::ostream& ost, const Node<T>* node, unsigned int level)
 }
 
 
-template <typename T>
+template <typename T> inline
 std::ostream& operator<<(std::ostream& ost, const BinaryTree<T>& temp)
 {
 	//if (!temp.root)
