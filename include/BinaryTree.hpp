@@ -28,7 +28,6 @@ public:
 	Node<T> *find_node(const T&, Node<T>*)const;
 	void deleteNode(Node<T>* temp);
 	void writing(const std::string& filename)const;
-	friend std::ostream& output(std::ostream& ost, const Node<T>* temp, unsigned int level);
 	friend std::ostream& operator<<<>(std::ostream&, const BinaryTree<T>&);
 
 };
