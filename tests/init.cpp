@@ -38,6 +38,6 @@ SCENARIO("removeElement", "[remEl]")
   obj.insert_node(3);
   obj.insert_node(4);
   obj.insert_node(5);
-  tree.remove_element(4);
+  obj.remove_element(4);
   REQUIRE(obj.find_node(4, obj.root_()) != nullptr);
 }
