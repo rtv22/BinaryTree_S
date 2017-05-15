@@ -30,7 +30,7 @@ SCENARIO("insert", "[insert]")
   REQUIRE(obj.find_node(3, obj.root_())->data == 3);
 }
 
-SCENARIO("insert", "[insert]")
+SCENARIO("removeElement", "[remEl]")
 {
   BinaryTree<int> obj;
   obj.insert_node(1);
