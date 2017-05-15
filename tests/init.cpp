@@ -36,8 +36,9 @@ SCENARIO("removeElement", "[remEl]")
   obj.insert_node(1);
   obj.insert_node(2);
   obj.insert_node(3);
-  obj.insert_node(4);
-  obj.insert_node(5);
-  obj.remove_element(1);
-	REQUIRE(bst == BinarySearchTree<int>({2, 3, 4, 5}));
+  obj.remove_elementl(2);
+  obj.remove_element(3);
+  REQUIRE(obj.find_node(1, obj.root_())== nullptr);
+  REQUIRE(obj.find_node(2, obj.root_())== obj.root_());
+  REQUIRE(obj.root_() != nullptr);
 }
