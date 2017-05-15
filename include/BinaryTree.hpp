@@ -148,3 +148,66 @@ std::ostream& operator<<(std::ostream& ost, const BinaryTree<T>& temp)
 	output(ost, temp.root, 0);
 	return ost;
 }
+
+template <typename T>
+Node<T>* BinaryTree<T>::_deleteRoot(Node<T>* temp)
+{
+	Node<T>* buff, *parent;
+	if (temp)
+	{
+		buff = temp->right;
+		if (!buff)
+		{
+			buff = temp->left;
+		}
+		else
+		{
+			if (buff->left)
+			{
+				parent = temp;
+				while (buff->left)
+				{
+					parent = buff;
+					buff = buff->left;
+				}
+				parent->left = buff->right;
+				buff->right = temp->right;
+			}
+			buff->left = temp->left;
+		}
+		delete temp;
+		return buff;
+	}
+	return nullptr;
+}
+
+template <typename T>
+void BinaryTree<T>::remove_element(const T& temp)
+{
+	Node<T>* buff = root, *parent;
+	if (root)
+	{
+		if (root->data == temp)
+		{
+			root = _deleteRoot(root);
+		}
+		else
+		{
+			parent = root;
+			if (temp < parent->data) buff = parent->left;
+			else buff = parent->right;
+			while (buff)
+			{
+				if (buff->data == temp)
+				{
+					if (temp < parent->data) parent->left = _deleteRoot(parent->left);
+					else parent->right = _deleteRoot(parent->right);
+					return;
+				}
+				parent = buff;
+				if (temp < parent->data) buff = parent->left;
+				else buff = parent->right;
+			}
+		}
+	}
+}
