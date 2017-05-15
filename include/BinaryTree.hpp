@@ -33,6 +33,8 @@ public:
 	Node<T> *find_node(const T&, Node<T>*)const;
 	void deleteNode(Node<T>* temp);
 	void writing(const std::string& filename)const;
+	void remove_element(const T& temp);
+	Node<T> *BinaryTree<T>::_deleteRoot(Node<T>* temp);
 	friend std::ostream& operator<<<>(std::ostream&, const BinaryTree<T>&);
 };
 
