@@ -107,7 +107,7 @@ template<typename T>
 void BinaryTree<T>::writing(const std::string& filename)const
 {
 	ofstream file_1(filename);
-	file_1 << CountElements << "\t";
+	file_1 << count << "\t";
 	output(file_1, root);
 	file_1.close();
 }
