@@ -5,48 +5,62 @@
 
 using namespace std;
 
+template<class T>
+struct instance_counter
+{
+	static size_t count;
+};
+
 template <typename T>
-struct Node {
+struct Node{
 	Node *left;
 	Node *right;
 	T data;
 };
 
+template<class T>
+struct node : instance_counter<node<T>>
+{
+};
+
 template <typename T>
- class BinaryTree;
- template <typename T>
- std::ostream& operator<<(std::ostream&, const BinaryTree<T>&);
+class BinaryTree;
+
+template <typename T>
+std::ostream& operator<<(std::ostream&, const BinaryTree<T>&);
 
 template <typename T>
 class BinaryTree
 {
 private:
 	Node<T>*root;
-	int CountElements;
+	int CountElements = 0;
 
 public:
 	BinaryTree();
 	~BinaryTree();
-	Node<T>* root_()const;
+	Node<T>* root_();
 	unsigned int count() const;
 	void insert_node(const T&x);
 	Node<T> *find_node(const T&, Node<T>*)const;
-	void deleteNode(Node<T>* temp);
-	void writing(const std::string& filename)const;
 	void remove_element(const T& temp);
-	Node<T>* _deleteRoot(Node<T>* temp);
+	void deleteNode(Node<T>* temp);
+	Node<T> *BinaryTree<T>::_deleteRoot(Node<T>* temp);
+	void writing(const std::string& filename)const;
 	friend std::ostream& operator<<<>(std::ostream&, const BinaryTree<T>&);
 };
+
+template<class T>
+size_t instance_counter<T>::count = 0;
 
 template <typename T>
 BinaryTree<T>::BinaryTree()
 {
 	root = nullptr;
-	CountElements = 0;
 }
 
 template<typename T>
-Node<T>* BinaryTree<T>::root_() const
+Node<T>* BinaryTree<T>::root_()
 {
 	return root;
 }
@@ -87,22 +101,24 @@ void BinaryTree<T>::insert_node(const T&x)
 	++CountElements;
 }
 
-
 template<typename T>
-Node<T>* BinaryTree<T>::find_node(const T& value, Node<T>* temp) const
+Node<T>* BinaryTree<T>::find_node(const T& data, Node<T>* temp) const
 {
-	if (temp == 0 || value == temp->data)
+	if (temp == 0 || data == temp->data)
 		return temp;
-	if (value > temp->data)
-		return find_node(value, temp->right);
+	if (data > temp->data)
+		return find_node(data, temp->right);
 	else
-		return find_node(value, temp->left);
+		return find_node(data, temp->left);
 }
 
 template<typename T>
-unsigned int BinaryTree<T>::count()const
+void BinaryTree<T>::writing(const std::string& filename)const
 {
-	return CountElements;
+	ofstream file_1(filename);
+	file_1 << CountElements << "\t";
+	output(file_1, root);
+	file_1.close();
 }
 
 template<typename T>
@@ -110,7 +126,7 @@ void BinaryTree<T>::deleteNode(Node<T>* temp)
 {
 	if (!temp)
 	{
-		return;
+		throw "error";
 	}
 	if (temp->left)
 	{
@@ -126,16 +142,6 @@ void BinaryTree<T>::deleteNode(Node<T>* temp)
 	delete temp;
 }
 
-template<typename T>
-void BinaryTree<T>::writing(const std::string& filename)const
-{
-	ofstream file_1(filename);
-	file_1 << CountElements << "\t";
-	output(file_1, root);
-	file_1.close();
-}
-
-
 template <typename T>
 std::ostream& output(std::ostream& ost, const Node<T>* node, unsigned int level)
 {
@@ -146,14 +152,6 @@ std::ostream& output(std::ostream& ost, const Node<T>* node, unsigned int level)
 		ost << "\t";
 	ost << node->data << std::endl;
 	output(ost, node->left, level + 1);
-	return ost;
-}
-
-
-template <typename T>
-std::ostream& operator<<(std::ostream& ost, const BinaryTree<T>& temp)
-{
-	output(ost, temp.root, 0);
 	return ost;
 }
 
@@ -207,7 +205,7 @@ void BinaryTree<T>::remove_element(const T& temp)
 			while (buff)
 			{
 				if (buff->data == temp)
-				{
+					{
 					if (temp < parent->data) parent->left = _deleteRoot(parent->left);
 					else parent->right = _deleteRoot(parent->right);
 					return;
@@ -217,6 +215,14 @@ void BinaryTree<T>::remove_element(const T& temp)
 				else buff = parent->right;
 			}
 		}
-		--CountElements;
 	}
+	--CountElements;
+}
+
+
+template <typename T>
+std::ostream& operator<<(std::ostream& ost, const BinaryTree<T>& temp)
+{
+	output(ost, temp.root, 0);
+	return ost;
 }
