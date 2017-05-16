@@ -211,5 +211,6 @@ void BinaryTree<T>::remove_element(const T& temp)
 				else buff = parent->right;
 			}
 		}
+		--CountElements;
 	}
 }
