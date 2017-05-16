@@ -56,6 +56,7 @@ BinaryTree<T>::~BinaryTree()
 	deleteNode(root);
 }
 
+template <typename T>
 int BinaryTree<T>::count()
 {
 	return count;
