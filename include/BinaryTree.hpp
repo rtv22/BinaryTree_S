@@ -5,22 +5,18 @@
 
 using namespace std;
 
-template<class T>
+template<typename T>
 struct instance_counter
 {
 	static size_t count;
 };
 
 template <typename T>
-struct Node{
+struct Node : instance_counter<Node<T>>
+{
 	Node *left;
 	Node *right;
 	T data;
-};
-
-template<class T>
-struct node : instance_counter<node<T>>
-{
 };
 
 template <typename T>
@@ -226,3 +222,5 @@ std::ostream& operator<<(std::ostream& ost, const BinaryTree<T>& temp)
 	output(ost, temp.root, 0);
 	return ost;
 }
+
+
