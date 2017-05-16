@@ -30,7 +30,7 @@ class BinaryTree
 {
 private:
 	Node<T>*root;
-	int CountElements = 0;
+	int count = 0;
 
 public:
 	BinaryTree();
@@ -48,8 +48,6 @@ public:
 
 template<class T>
 size_t instance_counter<T>::count = 0;
-
-
 
 template <typename T>
 BinaryTree<T>::BinaryTree()
@@ -71,7 +69,6 @@ BinaryTree<T>::~BinaryTree()
 
 unsigned int BinaryTree<T>::count()const
 {
-	count = CountElements;
 	return count;
 }
 
@@ -102,7 +99,7 @@ void BinaryTree<T>::insert_node(const T&x)
 		else
 			buff->right = MyTree;
 	}
-	++CountElements;
+	++count;
 }
 
 template<typename T>
@@ -220,7 +217,7 @@ void BinaryTree<T>::remove_element(const T& temp)
 			}
 		}
 	}
-	--CountElements;
+	--count;
 }
 
 
