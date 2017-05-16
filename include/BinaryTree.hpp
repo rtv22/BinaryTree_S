@@ -100,6 +100,12 @@ Node<T>* BinaryTree<T>::find_node(const T& value, Node<T>* temp) const
 }
 
 template<typename T>
+unsigned int BinaryTree<T>::count()const
+{
+	return CountElements;
+}
+
+template<typename T>
 void BinaryTree<T>::deleteNode(Node<T>* temp)
 {
 	if (!temp)
