@@ -69,9 +69,9 @@ BinaryTree<T>::~BinaryTree()
 	deleteNode(root);
 }
 
-unsigned int BinaryTree<T>::count()
+unsigned int BinaryTree<T>::count()const
 {
-	CountElements = count;
+	count = CountElements;
 	return count;
 }
 
