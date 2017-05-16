@@ -24,6 +24,7 @@ class BinaryTree
 {
 private:
 	Node<T>*root;
+	int count;
 public:
 	BinaryTree();
 	~BinaryTree();
