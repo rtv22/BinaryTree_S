@@ -49,5 +49,5 @@ SCENARIO("DEL", "[Del]")
   obj.insert_node(1);
   obj.insert_node(2);
   obj.remove_element(2);
-  REQUIRE(obj.count()== 1);
+  REQUIRE(count == 1);
 }
