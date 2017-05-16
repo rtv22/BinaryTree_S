@@ -8,7 +8,7 @@ using namespace std;
 template<typename T>
 struct instance_counter
 {
-	static size_t count;
+	static size_t count=0;
 };
 
 template <typename T>
