@@ -49,6 +49,8 @@ public:
 template<class T>
 size_t instance_counter<T>::count = 0;
 
+
+
 template <typename T>
 BinaryTree<T>::BinaryTree()
 {
@@ -65,6 +67,12 @@ template <typename T>
 BinaryTree<T>::~BinaryTree()
 {
 	deleteNode(root);
+}
+
+unsigned int BinaryTree<T>::count()
+{
+	CountElements = count;
+	return count;
 }
 
 
