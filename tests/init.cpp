@@ -47,6 +47,6 @@ SCENARIO("DEL", "[Del]")
   BinaryTree<int> obj;
   obj.insert_node(1);
   obj.insert_node(2);
-  obj.remove_element(2);
+  obj.deleteVal(2);
   REQUIRE(obj.getCount() == 1);
 }
