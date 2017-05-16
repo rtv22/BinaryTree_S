@@ -43,7 +43,6 @@ template <typename T>
 BinaryTree<T>::BinaryTree()
 {
 	root = nullptr;
-	count = 0;
 }
 
 template<typename T>
