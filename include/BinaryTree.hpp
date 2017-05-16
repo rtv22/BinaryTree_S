@@ -118,9 +118,7 @@ template<typename T>
 void BinaryTree<T>::deleteNode(Node<T>* temp)
 {
 	if (!temp)
-	{
-		throw "error";
-	}
+	return;
 	if (temp->left)
 	{
 		deleteNode(temp->left);
