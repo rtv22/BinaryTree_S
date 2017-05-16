@@ -38,9 +38,6 @@ public:
 	friend std::ostream& operator<<<>(std::ostream&, const BinaryTree<T>&);
 };
 
-template<typename T>
-size_t instance_counter<T>::count = 0;
-
 template <typename T>
 BinaryTree<T>::BinaryTree()
 {
