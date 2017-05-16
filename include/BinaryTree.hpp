@@ -50,7 +50,6 @@ template<typename T>
 Node<T>* BinaryTree<T>::root_()
 {
 	return root;
-	count = 0;
 }
 
 template <typename T>
