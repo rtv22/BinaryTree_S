@@ -5,14 +5,8 @@
 
 using namespace std;
 
-template<typename T>
-struct instance_counter
-{
-	static size_t count=0;
-};
-
 template <typename T>
-struct Node : instance_counter<Node<T>>
+struct Node
 {
 	Node *left;
 	Node *right;
@@ -39,7 +33,7 @@ public:
 	Node<T> *find_node(const T&, Node<T>*)const;
 	void remove_element(const T& temp);
 	void deleteNode(Node<T>* temp);
-	Node<T> *BinaryTree<T>::_deleteRoot(Node<T>* temp);
+	Node<T>* _deleteRoot(Node<T>* temp);
 	void writing(const std::string& filename)const;
 	friend std::ostream& operator<<<>(std::ostream&, const BinaryTree<T>&);
 };
