@@ -55,7 +55,6 @@ template <typename T>
 BinaryTree<T>::~BinaryTree()
 {
 	deleteNode(root);
-	count=0;
 }
 
 template <typename T>
