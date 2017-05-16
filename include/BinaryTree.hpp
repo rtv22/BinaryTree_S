@@ -24,17 +24,17 @@ class BinaryTree
 {
 private:
 	Node<T>*root;
-	int count=0;
+	int count = 0;
 public:
 	BinaryTree();
 	~BinaryTree();
 	Node<T>* root_();
 	unsigned int getCount()const;
 	void insert_node(const T&x);
-	Node<T> *find_node(const T&, Node<T>*)const;
-	void remove_element(const T& temp);
 	void deleteNode(Node<T>* temp);
-	Node<T>* _deleteRoot(Node<T>* temp);
+	Node<T> *find_node(const T&, Node<T>*)const;
+	bool remove_element(Node<T>* parent, Node<T>* current, const T& val);
+	bool deleteVal(const T& value);
 	void writing(const std::string& filename)const;
 	friend std::ostream& operator<<<>(std::ostream&, const BinaryTree<T>&);
 };
@@ -117,7 +117,7 @@ template<typename T>
 void BinaryTree<T>::deleteNode(Node<T>* temp)
 {
 	if (!temp)
-	return;
+		return;
 	if (temp->left)
 	{
 		deleteNode(temp->left);
@@ -145,68 +145,51 @@ std::ostream& output(std::ostream& ost, const Node<T>* node, unsigned int level)
 	return ost;
 }
 
-template <typename T>
-Node<T>* BinaryTree<T>::_deleteRoot(Node<T>* temp)
+template<typename T>
+bool BinaryTree<T>::remove_element(Node<T>* parent, Node<T>* current, const T& val)
 {
-	Node<T>* buff, *parent;
-	if (temp)
+	if (!current) return false;
+	if (current->data == val)
 	{
-		buff = temp->right;
-		if (!buff)
-		{
-			buff = temp->left;
-		}
-		else
-		{
-			if (buff->left)
-			{
-				parent = temp;
-				while (buff->left)
-				{
-					parent = buff;
-					buff = buff->left;
+		if (current->left == NULL || current->right == NULL) {
+			Node<T>* temp = current->left;
+			if (current->right) temp = current->right;
+			if (parent) {
+				if (parent->left == current) {
+					parent->left = temp;
 				}
-				parent->left = buff->right;
-				buff->right = temp->right;
+				else {
+					parent->right = temp;
+				}
 			}
-			buff->left = temp->left;
+			else {
+				this->root = temp;
+			}
 		}
-		delete temp;
-		return buff;
+		else {
+			Node<T>* validSubs = current->right;
+			while (validSubs->left) {
+				validSubs = validSubs->left;
+			}
+			T temp = current->data;
+			current->data = validSubs->data;
+			validSubs->data = temp;
+			return remove_element(current, current->right, temp);
+		}
+		delete current;
+		count--;
+		return true;
 	}
-	return nullptr;
+	if (current->data > val)
+		return remove_element(current, current->left, val);
+	else
+		return remove_element(current, current->right, val);
 }
 
-template <typename T>
-void BinaryTree<T>::remove_element(const T& temp)
+template<typename T>
+bool BinaryTree<T>::deleteVal(const T& value)
 {
-	Node<T>* buff = root, *parent;
-	if (root)
-	{
-		if (root->data == temp)
-		{
-			root = _deleteRoot(root);
-		}
-		else
-		{
-			parent = root;
-			if (temp < parent->data) buff = parent->left;
-			else buff = parent->right;
-			while (buff)
-			{
-				if (buff->data == temp)
-					{
-					if (temp < parent->data) parent->left = _deleteRoot(parent->left);
-					else parent->right = _deleteRoot(parent->right);
-					return;
-				}
-				parent = buff;
-				if (temp < parent->data) buff = parent->left;
-				else buff = parent->right;
-			}
-		}
-	}
-	--count;
+	return this->remove_element(NULL, root, value);
 }
 
 
@@ -216,5 +199,3 @@ std::ostream& operator<<(std::ostream& ost, const BinaryTree<T>& temp)
 	output(ost, temp.root, 0);
 	return ost;
 }
-
-
