@@ -30,13 +30,11 @@ class BinaryTree
 {
 private:
 	Node<T>*root;
-	int count = 0;
-
 public:
 	BinaryTree();
 	~BinaryTree();
 	Node<T>* root_();
-	unsigned int count() const;
+	int count();
 	void insert_node(const T&x);
 	Node<T> *find_node(const T&, Node<T>*)const;
 	void remove_element(const T& temp);
@@ -46,7 +44,7 @@ public:
 	friend std::ostream& operator<<<>(std::ostream&, const BinaryTree<T>&);
 };
 
-template<class T>
+template<typename T>
 size_t instance_counter<T>::count = 0;
 
 template <typename T>
@@ -67,7 +65,7 @@ BinaryTree<T>::~BinaryTree()
 	deleteNode(root);
 }
 
-unsigned int BinaryTree<T>::count()const
+int BinaryTree<T>::count()
 {
 	return count;
 }
