@@ -40,5 +40,5 @@ SCENARIO("removeElement", "[remEl]")
   REQUIRE(obj.find_node(1, obj.root_())== nullptr);
   REQUIRE(obj.find_node(2, obj.root_())== obj.root_());
   REQUIRE(obj.root_() != nullptr);
-  REQUIRE(obj.get_count() == 2);
+  REQUIRE(obj.count() == 2);
 }
