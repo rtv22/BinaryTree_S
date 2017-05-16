@@ -29,7 +29,7 @@ public:
 	BinaryTree();
 	~BinaryTree();
 	Node<T>* root_();
-	int count()const;
+	int getCount()const;
 	void insert_node(const T&x);
 	Node<T> *find_node(const T&, Node<T>*)const;
 	void remove_element(const T& temp);
@@ -60,7 +60,7 @@ BinaryTree<T>::~BinaryTree()
 }
 
 template <typename T>
-int BinaryTree<T>::count()const
+int BinaryTree<T>::getCount()const
 {
 	return count;
 }
