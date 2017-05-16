@@ -42,3 +42,12 @@ SCENARIO("removeElement", "[remEl]")
   REQUIRE(obj.root_() != nullptr);
   REQUIRE(obj.count() == 2);
 }
+
+SCENARIO("DEL", "[Del]")
+{
+  BinaryTree<int> obj;
+  obj.insert_node(1);
+  obj.insert_node(2);
+  obj.remove_element(2);
+  REQUIRE(obj.count()== 1);
+}
