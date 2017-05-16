@@ -40,7 +40,6 @@ SCENARIO("removeElement", "[remEl]")
   REQUIRE(obj.find_node(1, obj.root_())== nullptr);
   REQUIRE(obj.find_node(2, obj.root_())== obj.root_());
   REQUIRE(obj.root_() != nullptr);
-  REQUIRE(obj.count() == 2);
 }
 
 SCENARIO("DEL", "[Del]")
@@ -49,5 +48,5 @@ SCENARIO("DEL", "[Del]")
   obj.insert_node(1);
   obj.insert_node(2);
   obj.remove_element(2);
-  REQUIRE(count == 1);
+  REQUIRE(obj.count() == 1);
 }
